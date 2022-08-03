@@ -11,6 +11,7 @@ export class ShoppingListService {
     new Ingredient('Tomatoes',10)
   ];
 
+  // tslint:disable-next-line: no-empty
   constructor() { }
 
   getIngredients(){
