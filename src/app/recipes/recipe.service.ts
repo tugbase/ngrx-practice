@@ -11,20 +11,25 @@ export class RecipeService {
   recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [new Recipe('Imam Bayildi', 'A tasty Imama Bayildi',
-    'https://commons.wikimedia.org/wiki/File:Imam_bay%C4%B1ld%C4%B1.jpg', [
-    new Ingredient('aubergine', 5),
-    new Ingredient('tomato', 5)
+  'https://commons.wikimedia.org/wiki/File:Imam_bay%C4%B1ld%C4%B1.jpg', [
+  new Ingredient('aubergine', 5),
+  new Ingredient('tomato', 5)
   ]),
   new Recipe('Mucver', 'Best Vegetarian Dinner',
-    'https://yemek.com/tarif/havuclu-kabak-mucveri/', [
-    new Ingredient('Potato', 3),
-    new Ingredient('Carrot', 3)
+  'https://yemek.com/tarif/havuclu-kabak-mucveri/', [
+  new Ingredient('Potato', 3),
+  new Ingredient('Carrot', 3)
   ]),
 
   ];
-
+  // private recipes: Recipe[] = [];
 
   constructor(private shoppingService: ShoppingListService) { }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
